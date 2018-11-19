@@ -165,7 +165,7 @@
 					<span>
 						<i class="fa fa-clock-o"></i> 
 						<a href="/2018/11/19/learn-linux/" itemprop="url">
-	<time datetime="2018-11-19T04:10:41.911Z" itemprop="datePublished">
+	<time datetime="2018-11-19T12:32:39.423Z" itemprop="datePublished">
   		2018-11-19
   </time>
 </a>    
@@ -183,12 +183,7 @@
 					
 						<p>Linux基础5<br>网络相关命令</p>
 <p>以太网  –Ethernet<br>ping -检查网络可达性 - ICMP<br>tracepath –检查数据路由  （请求的路径通过的路由）<br>ifconfig  检查网络接口（网络适配器）<br>ip -查看配置网络接口相关信息<br>netstat   –查看网络状态<br>netstat -nap  n:以数字的形式返回网络状态 ，a -所有的  p -端口<br>进程，端口，服务起了没有<br>netstat-nap  | grep redis   查找redis服务<br>sftp -安全网络文件传输<br>scp  -安全文件拷贝<br>scp 文件 <a href="mailto:root@1.2.3.4" target="_blank" rel="noopener">root@1.2.3.4</a>:/目录/文件名   （将文件传到另一名用户）</p>
-<p>如何把程序放在后台学习：<br>redis-server &amp;  在启动redis的时候把程序放在后台运行<br>redis-server &gt; redis.log &amp;   输出重定向到redis.log </p>
-<blockquote>
-<blockquote>
-<p> 追加输出重定向<br>2&gt;  错误输出重定向</p>
-</blockquote>
-</blockquote>
+<p>如何把程序放在后台学习：<br>redis-server &amp;  在启动redis的时候把程序放在后台运行<br>redis-server &gt; redis.log &amp;   输出重定向到redis.log<br>.&gt;&gt;  追加输出重定向<br> 2&gt;  错误输出重定向</p>
 <p>jobs   查看在后台运行的进程<br>fg  %编号   把后台的运行的进程放在前台运行 （编号是jobs中前面的编号）<br>bg  %编号     让后台停止的程序运行起来<br>Ctl +z - 将前台进程暂停放在后台</p>
 <p>touch 文件名  如果文件的是已经创建的，那么改变他的创建时间，如果不存在就创建一个新的文件</p>
 <p>版本控制<br>1990s -CVS / VSS   （锁定模式）</p>
@@ -201,7 +196,6 @@
 <p>5.查看提交日志<br>git log     -查看前面的版本<br>git reflog  -查看到前面和后面的版本</p>
 <p>6.回到历史版本和之后的版本<br>git reset 版本号<br>git reset –hard HEAD^ 回到上一个版本<br>git reset –hard HEAD^^ 回到上两个版本<br>git reset –hard 版本的哈希摘要</p>
 <p>–hard参数是为了保持工作区和历史版本的一致性</p>
-<p>码云，gitthup</p>
 
 					
 				</div>
