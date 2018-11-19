@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Linux基础5网络相关命令 以太网  –Ethernetping -检查网络可达性 - ICMPtracepath –检查数据路由  （请求的路径通过的路由）ifconfig  检查网络接口（网络适配器）ip -查看配置网络接口相关信息netstat   –查看网络状态netstat -nap  n:以数字的形式返回网络状态 ，a -所有的  p -端口进程，端口，服务起了没有netstat-n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/11/19/learn-linux/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linux基础5网络相关命令 以太网  –Ethernetping -检查网络可达性 - ICMPtracepath –检查数据路由  （请求的路径通过的路由）ifconfig  检查网络接口（网络适配器）ip -查看配置网络接口相关信息netstat   –查看网络状态netstat -nap  n:以数字的形式返回网络状态 ，a -所有的  p -端口进程，端口，服务起了没有netstat-n">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-19T04:05:40.194Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Linux基础5网络相关命令 以太网  –Ethernetping -检查网络可达性 - ICMPtracepath –检查数据路由  （请求的路径通过的路由）ifconfig  检查网络接口（网络适配器）ip -查看配置网络接口相关信息netstat   –查看网络状态netstat -nap  n:以数字的形式返回网络状态 ，a -所有的  p -端口进程，端口，服务起了没有netstat-n">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-learn-linux" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/19/learn-linux/" class="article-date">
+  <time datetime="2018-11-19T04:10:41.911Z" itemprop="datePublished">2018-11-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux基础5<br>网络相关命令</p>
+<p>以太网  –Ethernet<br>ping -检查网络可达性 - ICMP<br>tracepath –检查数据路由  （请求的路径通过的路由）<br>ifconfig  检查网络接口（网络适配器）<br>ip -查看配置网络接口相关信息<br>netstat   –查看网络状态<br>netstat -nap  n:以数字的形式返回网络状态 ，a -所有的  p -端口<br>进程，端口，服务起了没有<br>netstat-nap  | grep redis   查找redis服务<br>sftp -安全网络文件传输<br>scp  -安全文件拷贝<br>scp 文件 <a href="mailto:root@1.2.3.4" target="_blank" rel="noopener">root@1.2.3.4</a>:/目录/文件名   （将文件传到另一名用户）</p>
+<p>如何把程序放在后台学习：<br>redis-server &amp;  在启动redis的时候把程序放在后台运行<br>redis-server &gt; redis.log &amp;   输出重定向到redis.log </p>
+<blockquote>
+<blockquote>
+<p> 追加输出重定向<br>2&gt;  错误输出重定向</p>
+</blockquote>
+</blockquote>
+<p>jobs   查看在后台运行的进程<br>fg  %编号   把后台的运行的进程放在前台运行 （编号是jobs中前面的编号）<br>bg  %编号     让后台停止的程序运行起来<br>Ctl +z - 将前台进程暂停放在后台</p>
+<p>touch 文件名  如果文件的是已经创建的，那么改变他的创建时间，如果不存在就创建一个新的文件</p>
+<p>版本控制<br>1990s -CVS / VSS   （锁定模式）</p>
+<p>替代品<br>2000s -SVN -Subversion  (合并模式)</p>
+<p>2005s -BitKeeper  (分布式版本控制系统)<br>Git C语言写的<br>Mercury  python写的</p>
+<p>Git的使用<br>1.创建git仓库<br>git init </p>
+<p>2.将代码纳入暂停区<br>git add 文件名<br>git add .</p>
+<p>3.查看暂存区状态<br>git status<br>git rm –cached 文件名 （将文件从缓存区移除）<br>git rm 文件名 （删除缓存区，同时工作区也删除文件）</p>
+<p>4.提交到本地仓库<br>git  commit -m ‘说明’</p>
+<p>5.查看提交日志<br>git log     -查看前面的版本<br>git reflog  -查看到前面和后面的版本</p>
+<p>6.回到历史版本和之后的版本<br>git reset 版本号<br>git reset –hard HEAD^ 回到上一个版本<br>git reset –hard HEAD^^ 回到上两个版本<br>git reset –hard 版本的哈希摘要</p>
+<p>–hard参数是为了保持工作区和历史版本的一致性</p>
+<p>码云，gitthup</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/19/learn-linux/" data-id="cjonsu3w40001lmj5wu7j6sut" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/19/learn-linux/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/19/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
