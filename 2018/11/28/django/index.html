@@ -165,7 +165,7 @@
 					<span>
 						<i class="fa fa-clock-o"></i> 
 						<a href="/2018/11/28/django/" itemprop="url">
-	<time datetime="2018-11-28T12:25:52.505Z" itemprop="datePublished">
+	<time datetime="2018-11-28T12:41:45.151Z" itemprop="datePublished">
   		2018-11-28
   </time>
 </a>    
@@ -181,174 +181,104 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<p>ngo在Mysql数据库中创建表<br>1.在应用下的models.py文件中编写数据模型<br>    创建简单的学生表格模型<br>        class Student(models.Model):<br>                name = models.CharField(max_length=10,unique=True)<br>                        age = models.IntegerField(default=18)<br>                                gender = models.BooleanField(default=1)</p>
-<pre><code>2.在项目下的settings.py文件中的INSTALLED_APPS下最后一行添加&apos;应用的名字&apos;
+						<hr>
+<p>  2 title: django<br>  3 date: 2018-11-28 20:32:13<br>  4 tags:django<br>  5 —<br>模型</p>
+<p>通过django在Mysql数据库中创建表<br>1.在应用下的models.py文件中编写数据模型<br>    创建简单的学生表格模型<br>    class Student(models.Model):<br>        name = models.CharField(max_length=10,unique=True)<br>        age = models.IntegerField(default=18)<br>        gender = models.BooleanField(default=1)</p>
+<p>2.在项目下的settings.py文件中的INSTALLED_APPS下最后一行添加’应用的名字’</p>
+<p>  在DATABASES 中更改数据库的信息 </p>
+<pre><code>DATABASES = {
+  &apos;default&apos;: {
+      &apos;ENGINE&apos;: &apos;django.db.backends.mysql&apos;,
+      &apos;NAME&apos;: &quot;dj7&quot;,
+      &apos;HOST&apos;:&quot;localhost&quot;,
+      &apos;USER&apos;:&apos;root&apos;,
+      &apos;PASSWORD&apos;:&quot;123456&quot;,
+      &apos;PORT&apos;:3306
+  }
+}
+</code></pre><p>3.更改项目下<strong>init</strong>.py文件，在里面倒出pymysql<br>  pymysql.install_as_MySQLdb()</p>
+<p>4.python manage.py makemigrations  生成迁移文件<br>此时在应用下的grations下面就会生成一个0001_initial.py文件</p>
+<p>5.python manage.py migrate   迁移文件<br>此时就会在dj7这个数据库下生成一张与模型对应的表格，自动生成主键，主键自动增长</p>
+<p>二、字段的定义</p>
+<p>字符串： CharField<br>整型  ： IntegerField<br>布尔  :  BooleanField<br>日期  ： DateTimeField、DateField、TimeField<br>自增  ： AutoField<br>图片  :  ImageField</p>
+<p>约束定义<br>是否唯一  unique<br>是否为空  null<br>默认值    default<br>默认时间  auto_now_add<br>修改时间  auto_now</p>
+<p>#ORM,对象关系映射</p>
+<p>增加 –create()<br>一、</p>
+<pre><code># 第一种方式进行创建：save()
+# stu=Student()
+# stu .name = &apos;小明&apos;
+# 向数据库中插入一条数据
+# stu.save()
+</code></pre><p>二、模型名.objects.create(name=’更改’，age=19)</p>
+<p>删除 –delete()<br>    1.模型名.objects.filter(name=’筛选’).delete()</p>
+<p>修改 –update()<br>一、<br>    stu = Student.objects.filter(name=’小明’).first()<br>    stu.name=’大明’<br>    stu.save()<br>二、模型名.objects.filter(xxx=’筛选’).update(xxx=’更改’)</p>
+<p>查询 –filter() ==&gt;’select * from xxx’<br>一、<br>模型名.objects.filter(xxx=’筛选’)<br>filter方法：<br>查询结果可以不存在 或者可以为多个<br>如果查询结果不存在，返回一个空的列表</p>
+<p>二、<br>模型名.objects.get(xxx=’筛选’<br>get 方法：<br>获取唯一的满足条件的对象，且查询的条件必须存在<br>如果查询结果不存在或者结果为多个都报错</p>
+<p>查询结果的筛选：<br>first()：查询结果中的第一个<br>last():查询结果中的最后一个</p>
+<p>拿到全部表格对象：<br>模型名.objects.all()</p>
+<p>多条件筛选：<br>模型名.objects.filter(xxx=’筛选’).filter(xxx=’筛选’)<br>模型名.objects.filter(xxx=’筛选’，xxx=’筛选’)</p>
+<p>exclud():查询不包含该条件的结果</p>
+<pre><code># 查询不叫大明的学生信息
+stus = Student.objects.exclude(name=&apos;军军&apos;)
+</code></pre><p>values():选择查看结果对象的信息</p>
+<pre><code># 通过values()查看学生对象的所有信息
+stus = Student.objects.filter(name=&apos;军军&apos;).values()
+# 通过values()查看学生name,id的信息
+stus = Student.objects.filter(name=&apos;军军&apos;).values(&apos;name&apos;,&apos;id&apos;)
+</code></pre><p>exists():</p>
+<pre><code># 判断name = 军军的学生存不存在，存在返回True，不存在返回False
+stu = Student.objects.filter(name=&apos;军军&apos;).exists()
+</code></pre><p>排序：<br>    排序 order_by<br>    降序 –&gt; -id ,在sql中id desc<br>    升序 –&gt;  id , 在sql 中id asc</p>
+<pre><code>#查询所有的Student的对象，以升序排序
+stus = Student.objects.all().order_by(&apos;id&apos;)
+#查询结果以age的大小（逆序）排序
+stus = Student.objects.all().order_by(&apos;-age&apos;)
+</code></pre><p>基于like模糊查询：</p>
+<pre><code>contains:区分大小写;icontains:大小写不敏感
+name__contains=&apos;大&apos; --&gt;相当于是like &apos;%大%&apos;
+stus = Student.objects.filter(name__contains=&apos;大&apos;)
 
-      在DATABASES 中更改数据库的信息 
+endswith:区分大小写；iendswith：不区分大小写
+name__endswith=&apos;大&apos;--&gt;相当于是like ‘%大’
+stus = Student.objects.filter(name__endswith=&apos;大&apos;)
 
-            DATABASES = {
-                  &apos;default&apos;: {
-                            &apos;ENGINE&apos;: &apos;django.db.backends.mysql&apos;,
-                                        &apos;NAME&apos;: &quot;dj7&quot;,
-                                                    &apos;HOST&apos;:&quot;localhost&quot;,
-                                                                &apos;USER&apos;:&apos;root&apos;,
-                                                                            &apos;PASSWORD&apos;:&quot;123456&quot;,
-                                                                                        &apos;PORT&apos;:3306
-                                                                                                }
-                                                                                                      }
+startwith:区分大小写，istartswith：不区分大小写
+name__startswith=&apos;大&apos;--&gt;相当于是like ‘大%’
+#stus = Student.objects.filter(name__startswith=&apos;大&apos;)
+</code></pre><p>in: 集合运算</p>
+<pre><code>#sql :select * from Student where id in (1,2,3);
+# 查询id在[1,2,3] 中的对象
+stus = Student.objects.filter(id__in=[1,2,3])
+# 查询pk（主键）在[1,2,3]中的对象
+stus = Student.objects.filter(pk__in=[1,2,3]
+</code></pre><p>比较运算:</p>
+<pre><code>大于：__gt__    ；大于等于 ：__gte__
+小于：__lt__    ；小于等于 ：__lte__
+#查询age小于30的对象
+stus = Student.objects.filter(age__lt=30)
+</code></pre><p>聚合函数：</p>
+<pre><code># 获取所有对象age的平均值
+avg_age = Student.objects.all().aggregate(Avg(&apos;age&apos;))
+print(avg_age)
+# 查询所有对象age的总和
+sum_age = Student.objects.all().aggregate(Sum(&apos;age&apos;))
+</code></pre><p>Q对象（用于执行复杂查询）的使用：</p>
+<pre><code># 中间打个逗号，意思是并且
+stus = Student.objects.filter(Q(age=18),Q(gender=1))
+# &amp; 并且，对应and
+stus = Student.objects.filter(Q(age=18) &amp; Q(gender=1))
+# | 或者，对应or
+stus = Student.objects.filter(Q(age=18) | Q(gender=1))
+#查询age不是18，或者gender=1的学生对象
+stus = Student.objects.filter(~Q(age=18) | Q(gender=1))
 
-                                                                                                      3.更改项目下__init__.py文件，在里面倒出pymysql 
-                                                                                                        pymysql.install_as_MySQLdb()
+# 查询语文成绩大于数学成绩的对象
+stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;))
+# 查询语文成绩大于数学成绩10分以上的
+stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;)+10)
+</code></pre><p>更改启动服务后的ip和端口<br>格式:python manage.py runserver ip：端口</p>
+<p>格式：python manage.py runserver 端口<br>不能在后面只改IP</p>
 
-                                                                                                        4.python manage.py makemigrations  生成迁移文件
-                                                                                                        此时在应用下的grations下面就会生成一个0001_initial.py文件
-
-                                                                                                        5.python manage.py migrate   迁移文件
-                                                                                                        此时就会在dj7这个数据库下生成一张与模型对应的表格，自动生成主键，主键自动增长
-
-
-                                                                                                        二、字段的定义
-
-                                                                                                        字符串： CharField
-                                                                                                        整型  ： IntegerField
-                                                                                                        布尔  :  BooleanField
-                                                                                                        日期  ： DateTimeField、DateField、TimeField
-                                                                                                        自增  ： AutoField
-                                                                                                        图片  :  ImageField
-
-                                                                                                        约束定义
-                                                                                                        是否唯一  unique
-                                                                                                        是否为空  null
-                                                                                                        默认值    default
-                                                                                                        默认时间  auto_now_add
-                                                                                                        修改时间  auto_now
-
-
-                                                                                                        #ORM,对象关系映射
-
-
-                                                                                                        增加 --create()
-                                                                                                        一、
-                                                                                                            # 第一种方式进行创建：save()
-                                                                                                                # stu=Student()
-                                                                                                                    # stu .name = &apos;小明&apos;
-                                                                                                                        # 向数据库中插入一条数据
-                                                                                                                            # stu.save()
-                                                                                                                            二、模型名.objects.create(name=&apos;更改&apos;，age=19)
-
-                                                                                                                            删除 --delete()
-                                                                                                                                1.模型名.objects.filter(name=&apos;筛选&apos;).delete()
-
-                                                                                                                                修改 --update() 
-                                                                                                                                一、
-                                                                                                                                    stu = Student.objects.filter(name=&apos;小明&apos;).first()
-                                                                                                                                        stu.name=&apos;大明&apos;
-                                                                                                                                            stu.save()
-                                                                                                                                            二、模型名.objects.filter(xxx=&apos;筛选&apos;).update(xxx=&apos;更改&apos;)
-
-                                                                                                                                            查询 --filter() ==&gt;&apos;select * from xxx&apos;
-                                                                                                                                            一、
-                                                                                                                                            模型名.objects.filter(xxx=&apos;筛选&apos;)
-                                                                                                                                            filter方法：
-                                                                                                                                            查询结果可以不存在 或者可以为多个
-                                                                                                                                            如果查询结果不存在，返回一个空的列表
-
-                                                                                                                                            二、
-                                                                                                                                            模型名.objects.get(xxx=&apos;筛选&apos;
-                                                                                                                                            get 方法：
-                                                                                                                                            获取唯一的满足条件的对象，且查询的条件必须存在
-                                                                                                                                            如果查询结果不存在或者结果为多个都报错
-
-
-                                                                                                                                            查询结果的筛选：
-                                                                                                                                            first()：查询结果中的第一个
-                                                                                                                                            last():查询结果中的最后一个
-
-                                                                                                                                            拿到全部表格对象：
-                                                                                                                                            模型名.objects.all()
-
-                                                                                                                                            多条件筛选：
-                                                                                                                                            模型名.objects.filter(xxx=&apos;筛选&apos;).filter(xxx=&apos;筛选&apos;)
-                                                                                                                                            模型名.objects.filter(xxx=&apos;筛选&apos;，xxx=&apos;筛选&apos;)
-
-                                                                                                                                            exclud():查询不包含该条件的结果
-
-                                                                                                                                                # 查询不叫大明的学生信息
-                                                                                                                                                    stus = Student.objects.exclude(name=&apos;军军&apos;)
-
-                                                                                                                                                    values():选择查看结果对象的信息
-                                                                                                                                                        # 通过values()查看学生对象的所有信息
-                                                                                                                                                            stus = Student.objects.filter(name=&apos;军军&apos;).values()
-                                                                                                                                                                # 通过values()查看学生name,id的信息
-                                                                                                                                                                    stus = Student.objects.filter(name=&apos;军军&apos;).values(&apos;name&apos;,&apos;id&apos;)
-
-                                                                                                                                                                    exists():
-                                                                                                                                                                        # 判断name = 军军的学生存不存在，存在返回True，不存在返回False
-                                                                                                                                                                            stu = Student.objects.filter(name=&apos;军军&apos;).exists()
-
-                                                                                                                                                                            排序：
-                                                                                                                                                                                排序 order_by
-                                                                                                                                                                                    降序 --&gt; -id ,在sql中id desc
-                                                                                                                                                                                        升序 --&gt;  id , 在sql 中id asc
-                                                                                                                                                                                            #查询所有的Student的对象，以升序排序
-                                                                                                                                                                                                stus = Student.objects.all().order_by(&apos;id&apos;)
-                                                                                                                                                                                                    #查询结果以age的大小（逆序）排序
-                                                                                                                                                                                                        stus = Student.objects.all().order_by(&apos;-age&apos;)
-
-
-                                                                                                                                                                                                        基于like模糊查询：
-
-                                                                                                                                                                                                            contains:区分大小写;icontains:大小写不敏感
-                                                                                                                                                                                                                name__contains=&apos;大&apos; --&gt;相当于是like &apos;%大%&apos;
-                                                                                                                                                                                                                    stus = Student.objects.filter(name__contains=&apos;大&apos;)
-
-                                                                                                                                                                                                                        endswith:区分大小写；iendswith：不区分大小写
-                                                                                                                                                                                                                            name__endswith=&apos;大&apos;--&gt;相当于是like ‘%大’
-                                                                                                                                                                                                                                stus = Student.objects.filter(name__endswith=&apos;大&apos;)
-
-                                                                                                                                                                                                                                    startwith:区分大小写，istartswith：不区分大小写
-                                                                                                                                                                                                                                        name__startswith=&apos;大&apos;--&gt;相当于是like ‘大%’
-                                                                                                                                                                                                                                            #stus = Student.objects.filter(name__startswith=&apos;大&apos;)
-
-                                                                                                                                                                                                                                            in: 集合运算
-
-                                                                                                                                                                                                                                                #sql :select * from Student where id in (1,2,3);
-                                                                                                                                                                                                                                                    # 查询id在[1,2,3] 中的对象
-                                                                                                                                                                                                                                                        stus = Student.objects.filter(id__in=[1,2,3])
-                                                                                                                                                                                                                                                            # 查询pk（主键）在[1,2,3]中的对象
-                                                                                                                                                                                                                                                                stus = Student.objects.filter(pk__in=[1,2,3]
-
-                                                                                                                                                                                                                                                                比较运算:
-
-                                                                                                                                                                                                                                                                    大于：__gt__    ；大于等于 ：__gte__
-                                                                                                                                                                                                                                                                        小于：__lt__    ；小于等于 ：__lte__
-                                                                                                                                                                                                                                                                            #查询age小于30的对象
-                                                                                                                                                                                                                                                                                stus = Student.objects.filter(age__lt=30)
-
-                                                                                                                                                                                                                                                                                聚合函数：
-
-                                                                                                                                                                                                                                                                                    # 获取所有对象age的平均值
-                                                                                                                                                                                                                                                                                        avg_age = Student.objects.all().aggregate(Avg(&apos;age&apos;))
-                                                                                                                                                                                                                                                                                            print(avg_age)
-                                                                                                                                                                                                                                                                                                # 查询所有对象age的总和
-                                                                                                                                                                                                                                                                                                    sum_age = Student.objects.all().aggregate(Sum(&apos;age&apos;))
-
-                                                                                                                                                                                                                                                                                                    Q对象（用于执行复杂查询）的使用：
-
-                                                                                                                                                                                                                                                                                                        # 中间打个逗号，意思是并且
-                                                                                                                                                                                                                                                                                                            stus = Student.objects.filter(Q(age=18),Q(gender=1))
-                                                                                                                                                                                                                                                                                                                # &amp; 并且，对应and
-                                                                                                                                                                                                                                                                                                                    stus = Student.objects.filter(Q(age=18) &amp; Q(gender=1))
-                                                                                                                                                                                                                                                                                                                        # | 或者，对应or
-                                                                                                                                                                                                                                                                                                                            stus = Student.objects.filter(Q(age=18) | Q(gender=1))
-                                                                                                                                                                                                                                                                                                                                #查询age不是18，或者gender=1的学生对象
-                                                                                                                                                                                                                                                                                                                                    stus = Student.objects.filter(~Q(age=18) | Q(gender=1))
-
-                                                                                                                                                                                                                                                                                                                                        # 查询语文成绩大于数学成绩的对象
-                                                                                                                                                                                                                                                                                                                                            stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;))
-                                                                                                                                                                                                                                                                                                                                                # 查询语文成绩大于数学成绩10分以上的
-                                                                                                                                                                                                                                                                                                                                                    stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;)+10)
-</code></pre>
 					
 				</div>
 			</div>
