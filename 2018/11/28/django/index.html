@@ -165,7 +165,7 @@
 					<span>
 						<i class="fa fa-clock-o"></i> 
 						<a href="/2018/11/28/django/" itemprop="url">
-	<time datetime="2018-11-28T12:41:45.151Z" itemprop="datePublished">
+	<time datetime="2018-11-28T12:45:07.501Z" itemprop="datePublished">
   		2018-11-28
   </time>
 </a>    
@@ -182,7 +182,8 @@
 				<div class="content" id="post-content">
 					
 						<hr>
-<p>  2 title: django<br>  3 date: 2018-11-28 20:32:13<br>  4 tags:django<br>  5 —<br>模型</p>
+<p>title: django<br>date: 2018-11-28 20:32:13</p>
+<h2 id="tags-django"><a href="#tags-django" class="headerlink" title="tags:django"></a>tags:django</h2><p>模型</p>
 <p>通过django在Mysql数据库中创建表<br>1.在应用下的models.py文件中编写数据模型<br>    创建简单的学生表格模型<br>    class Student(models.Model):<br>        name = models.CharField(max_length=10,unique=True)<br>        age = models.IntegerField(default=18)<br>        gender = models.BooleanField(default=1)</p>
 <p>2.在项目下的settings.py文件中的INSTALLED_APPS下最后一行添加’应用的名字’</p>
 <p>  在DATABASES 中更改数据库的信息 </p>
@@ -372,6 +373,18 @@ stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;)+10)
 	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
 -->
 
+	
+		<aside class="post-widget">
+			<nav class="post-toc-wrap" id="post-toc">
+				
+					<strong>文章目录</strong>
+				
+				
+				<!--toc(post.content)-->
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tags-django"><span class="post-toc-text">tags:django</span></a></li></ol>
+			</nav>
+			<div class="post-toc-bar"><div>
+		</div></div></aside>
 	
 
 	</div>
