@@ -1,0 +1,580 @@
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+
+
+	<!DOCTYPE html>
+	<html>
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<title>Linux基础</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Gaoyu">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+   	<!-- css -->
+	<link rel="stylesheet" href="/css/style.css">
+
+	<!-- favicon -->
+	<link href="/img/favicon.ico" rel="Shortcut Icon" type="image/ico">
+	
+	<!-- font-awesome -->
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+	<body>	
+		<!--Preloader-->
+<div id="preloader">
+	<div id="status">
+		<img alt="PRELOADER" src="/img/logo.png">
+	</div>
+</div>
+<!--Preloader end-->
+
+<!-- header -->
+
+	<header id="header-bg-2">
+
+	
+		<div id="cd-logo"><a href="/"><img src="/img/logo.png" alt="Logo"></a></div>
+	
+	
+	<!-- motto or description -->
+		
+ 		<p class="motto"></p>
+	
+	
+	<!-- current page name or title -->
+	
+		
+		
+			
+			<p class="page-name">当前文章&nbsp;:&nbsp;《》</p>
+			
+		
+	
+	
+	<!-- others: such as change-bg, time... -->
+	<p class="page-name-other">
+		11/28/2018 
+		<style type="text/css">
+	header:after {
+		content: '';
+		position: relative;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: #222222;
+		opacity: .5;
+		z-index: -1;
+	}
+	
+	.change-header-bg{
+		font-style: normal;
+	}
+	.change-header-bg i{
+		text-align: center;
+		cursor: pointer;
+		pointer-events: bounding-box;
+	}
+	@media(max-width:512px) {
+		.change-header-bg {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	
+</style>
+
+<script type="text/javascript">
+	function changeHeaderBg(){
+		var random_bg = Math.floor(Math.random() * 109 + 1);
+		var bg = 'url(https://XXX-youname-XXX.github.io/Random-img/' + random_bg + '.jpg)';
+		$("#header-bg-2").css("background-image", bg);
+	}
+</script>
+
+<span class="change-header-bg">
+	——&nbsp;<i class="fa fa-camera-retro" onclick="changeHeaderBg()"></i>	
+</span>
+	</p>		
+</header>
+
+<!-- nav -->
+<div id="cd-nav">
+	<a href="#0" title="menu" class="cd-nav-trigger"><span></span></a>
+
+	<nav id="cd-main-nav">
+		<ul>
+			
+      		<li class="fa fa-/">
+           		<a href="/" title="主页">主页</a>	
+      		</li>
+    		
+      		<li class="fa fa-/archives">
+           		<a href="/archives" title="归档">归档</a>	
+      		</li>
+    		
+      		<li class="fa fa-/categories">
+           		<a href="/categories" title="分类">分类</a>	
+      		</li>
+    		
+      		<li class="fa fa-/tags">
+           		<a href="/tags" title="标签">标签</a>	
+      		</li>
+    		
+      		<li class="fa fa-/about">
+           		<a href="/about" title="关于">关于</a>	
+      		</li>
+    		
+      		<li class="fa fa-/gallery">
+           		<a href="/gallery" title="相册">相册</a>	
+      		</li>
+    		
+    		
+        	
+		</ul>
+	</nav>
+</div>
+
+		<!--main-->
+		<main> 
+		<div class="page-container">
+		<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed blog-content">
+	<div class="am-u-md-8 am-u-sm-12">
+
+		<article class="am-article blog-article-p">
+
+			<div class="am-article-hd">
+				
+
+
+				<h1 class="am-article-title blog-text-center">
+					
+					
+				</h1>
+
+				<p class="am-article-meta blog-text-center">
+					<span>
+						<i class="fa fa-clock-o"></i> 
+						<a href="/2018/11/28/django/" itemprop="url">
+	<time datetime="2018-11-28T12:25:52.505Z" itemprop="datePublished">
+  		2018-11-28
+  </time>
+</a>    
+&nbsp;
+					</span>
+					
+					<span>						
+						
+					</span>
+				</p>
+			</div>
+
+			<div class="am-article-bd">
+				<div class="content" id="post-content">
+					
+						<p>ngo在Mysql数据库中创建表<br>1.在应用下的models.py文件中编写数据模型<br>    创建简单的学生表格模型<br>        class Student(models.Model):<br>                name = models.CharField(max_length=10,unique=True)<br>                        age = models.IntegerField(default=18)<br>                                gender = models.BooleanField(default=1)</p>
+<pre><code>2.在项目下的settings.py文件中的INSTALLED_APPS下最后一行添加&apos;应用的名字&apos;
+
+      在DATABASES 中更改数据库的信息 
+
+            DATABASES = {
+                  &apos;default&apos;: {
+                            &apos;ENGINE&apos;: &apos;django.db.backends.mysql&apos;,
+                                        &apos;NAME&apos;: &quot;dj7&quot;,
+                                                    &apos;HOST&apos;:&quot;localhost&quot;,
+                                                                &apos;USER&apos;:&apos;root&apos;,
+                                                                            &apos;PASSWORD&apos;:&quot;123456&quot;,
+                                                                                        &apos;PORT&apos;:3306
+                                                                                                }
+                                                                                                      }
+
+                                                                                                      3.更改项目下__init__.py文件，在里面倒出pymysql 
+                                                                                                        pymysql.install_as_MySQLdb()
+
+                                                                                                        4.python manage.py makemigrations  生成迁移文件
+                                                                                                        此时在应用下的grations下面就会生成一个0001_initial.py文件
+
+                                                                                                        5.python manage.py migrate   迁移文件
+                                                                                                        此时就会在dj7这个数据库下生成一张与模型对应的表格，自动生成主键，主键自动增长
+
+
+                                                                                                        二、字段的定义
+
+                                                                                                        字符串： CharField
+                                                                                                        整型  ： IntegerField
+                                                                                                        布尔  :  BooleanField
+                                                                                                        日期  ： DateTimeField、DateField、TimeField
+                                                                                                        自增  ： AutoField
+                                                                                                        图片  :  ImageField
+
+                                                                                                        约束定义
+                                                                                                        是否唯一  unique
+                                                                                                        是否为空  null
+                                                                                                        默认值    default
+                                                                                                        默认时间  auto_now_add
+                                                                                                        修改时间  auto_now
+
+
+                                                                                                        #ORM,对象关系映射
+
+
+                                                                                                        增加 --create()
+                                                                                                        一、
+                                                                                                            # 第一种方式进行创建：save()
+                                                                                                                # stu=Student()
+                                                                                                                    # stu .name = &apos;小明&apos;
+                                                                                                                        # 向数据库中插入一条数据
+                                                                                                                            # stu.save()
+                                                                                                                            二、模型名.objects.create(name=&apos;更改&apos;，age=19)
+
+                                                                                                                            删除 --delete()
+                                                                                                                                1.模型名.objects.filter(name=&apos;筛选&apos;).delete()
+
+                                                                                                                                修改 --update() 
+                                                                                                                                一、
+                                                                                                                                    stu = Student.objects.filter(name=&apos;小明&apos;).first()
+                                                                                                                                        stu.name=&apos;大明&apos;
+                                                                                                                                            stu.save()
+                                                                                                                                            二、模型名.objects.filter(xxx=&apos;筛选&apos;).update(xxx=&apos;更改&apos;)
+
+                                                                                                                                            查询 --filter() ==&gt;&apos;select * from xxx&apos;
+                                                                                                                                            一、
+                                                                                                                                            模型名.objects.filter(xxx=&apos;筛选&apos;)
+                                                                                                                                            filter方法：
+                                                                                                                                            查询结果可以不存在 或者可以为多个
+                                                                                                                                            如果查询结果不存在，返回一个空的列表
+
+                                                                                                                                            二、
+                                                                                                                                            模型名.objects.get(xxx=&apos;筛选&apos;
+                                                                                                                                            get 方法：
+                                                                                                                                            获取唯一的满足条件的对象，且查询的条件必须存在
+                                                                                                                                            如果查询结果不存在或者结果为多个都报错
+
+
+                                                                                                                                            查询结果的筛选：
+                                                                                                                                            first()：查询结果中的第一个
+                                                                                                                                            last():查询结果中的最后一个
+
+                                                                                                                                            拿到全部表格对象：
+                                                                                                                                            模型名.objects.all()
+
+                                                                                                                                            多条件筛选：
+                                                                                                                                            模型名.objects.filter(xxx=&apos;筛选&apos;).filter(xxx=&apos;筛选&apos;)
+                                                                                                                                            模型名.objects.filter(xxx=&apos;筛选&apos;，xxx=&apos;筛选&apos;)
+
+                                                                                                                                            exclud():查询不包含该条件的结果
+
+                                                                                                                                                # 查询不叫大明的学生信息
+                                                                                                                                                    stus = Student.objects.exclude(name=&apos;军军&apos;)
+
+                                                                                                                                                    values():选择查看结果对象的信息
+                                                                                                                                                        # 通过values()查看学生对象的所有信息
+                                                                                                                                                            stus = Student.objects.filter(name=&apos;军军&apos;).values()
+                                                                                                                                                                # 通过values()查看学生name,id的信息
+                                                                                                                                                                    stus = Student.objects.filter(name=&apos;军军&apos;).values(&apos;name&apos;,&apos;id&apos;)
+
+                                                                                                                                                                    exists():
+                                                                                                                                                                        # 判断name = 军军的学生存不存在，存在返回True，不存在返回False
+                                                                                                                                                                            stu = Student.objects.filter(name=&apos;军军&apos;).exists()
+
+                                                                                                                                                                            排序：
+                                                                                                                                                                                排序 order_by
+                                                                                                                                                                                    降序 --&gt; -id ,在sql中id desc
+                                                                                                                                                                                        升序 --&gt;  id , 在sql 中id asc
+                                                                                                                                                                                            #查询所有的Student的对象，以升序排序
+                                                                                                                                                                                                stus = Student.objects.all().order_by(&apos;id&apos;)
+                                                                                                                                                                                                    #查询结果以age的大小（逆序）排序
+                                                                                                                                                                                                        stus = Student.objects.all().order_by(&apos;-age&apos;)
+
+
+                                                                                                                                                                                                        基于like模糊查询：
+
+                                                                                                                                                                                                            contains:区分大小写;icontains:大小写不敏感
+                                                                                                                                                                                                                name__contains=&apos;大&apos; --&gt;相当于是like &apos;%大%&apos;
+                                                                                                                                                                                                                    stus = Student.objects.filter(name__contains=&apos;大&apos;)
+
+                                                                                                                                                                                                                        endswith:区分大小写；iendswith：不区分大小写
+                                                                                                                                                                                                                            name__endswith=&apos;大&apos;--&gt;相当于是like ‘%大’
+                                                                                                                                                                                                                                stus = Student.objects.filter(name__endswith=&apos;大&apos;)
+
+                                                                                                                                                                                                                                    startwith:区分大小写，istartswith：不区分大小写
+                                                                                                                                                                                                                                        name__startswith=&apos;大&apos;--&gt;相当于是like ‘大%’
+                                                                                                                                                                                                                                            #stus = Student.objects.filter(name__startswith=&apos;大&apos;)
+
+                                                                                                                                                                                                                                            in: 集合运算
+
+                                                                                                                                                                                                                                                #sql :select * from Student where id in (1,2,3);
+                                                                                                                                                                                                                                                    # 查询id在[1,2,3] 中的对象
+                                                                                                                                                                                                                                                        stus = Student.objects.filter(id__in=[1,2,3])
+                                                                                                                                                                                                                                                            # 查询pk（主键）在[1,2,3]中的对象
+                                                                                                                                                                                                                                                                stus = Student.objects.filter(pk__in=[1,2,3]
+
+                                                                                                                                                                                                                                                                比较运算:
+
+                                                                                                                                                                                                                                                                    大于：__gt__    ；大于等于 ：__gte__
+                                                                                                                                                                                                                                                                        小于：__lt__    ；小于等于 ：__lte__
+                                                                                                                                                                                                                                                                            #查询age小于30的对象
+                                                                                                                                                                                                                                                                                stus = Student.objects.filter(age__lt=30)
+
+                                                                                                                                                                                                                                                                                聚合函数：
+
+                                                                                                                                                                                                                                                                                    # 获取所有对象age的平均值
+                                                                                                                                                                                                                                                                                        avg_age = Student.objects.all().aggregate(Avg(&apos;age&apos;))
+                                                                                                                                                                                                                                                                                            print(avg_age)
+                                                                                                                                                                                                                                                                                                # 查询所有对象age的总和
+                                                                                                                                                                                                                                                                                                    sum_age = Student.objects.all().aggregate(Sum(&apos;age&apos;))
+
+                                                                                                                                                                                                                                                                                                    Q对象（用于执行复杂查询）的使用：
+
+                                                                                                                                                                                                                                                                                                        # 中间打个逗号，意思是并且
+                                                                                                                                                                                                                                                                                                            stus = Student.objects.filter(Q(age=18),Q(gender=1))
+                                                                                                                                                                                                                                                                                                                # &amp; 并且，对应and
+                                                                                                                                                                                                                                                                                                                    stus = Student.objects.filter(Q(age=18) &amp; Q(gender=1))
+                                                                                                                                                                                                                                                                                                                        # | 或者，对应or
+                                                                                                                                                                                                                                                                                                                            stus = Student.objects.filter(Q(age=18) | Q(gender=1))
+                                                                                                                                                                                                                                                                                                                                #查询age不是18，或者gender=1的学生对象
+                                                                                                                                                                                                                                                                                                                                    stus = Student.objects.filter(~Q(age=18) | Q(gender=1))
+
+                                                                                                                                                                                                                                                                                                                                        # 查询语文成绩大于数学成绩的对象
+                                                                                                                                                                                                                                                                                                                                            stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;))
+                                                                                                                                                                                                                                                                                                                                                # 查询语文成绩大于数学成绩10分以上的
+                                                                                                                                                                                                                                                                                                                                                    stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;)+10)
+</code></pre>
+					
+				</div>
+			</div>
+		</article>
+
+		<ul class="am-pagination">
+    
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/11/19/learn-linux/" title="">
+			下一篇 &raquo;
+		</a>
+		</li>
+	 
+ </ul>
+        
+
+		<div class="theme-annie-comment-button-container">
+	<button id="annie-comment-button" class="theme-annie-comment-button" onclick="Annie_Comment()">
+		加载评论
+		<!--加载评论-->
+	</button>
+</div>
+
+<div id="annie-comment-container" class="theme-annie-comment-main-container">
+
+	
+		
+			<!-- comment valine -->
+			<!-- show valine comment -->
+<div id="valineComment" class="comment"></div>
+
+<!-- valine`s js & css -->
+<script>
+	window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js"><\/script>')
+</script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/js/valine.min.js"></script>
+<link rel="stylesheet" href="/css/comment.css">
+
+<script>
+	var checkExistComment = setInterval(function() {
+		if( $('#valineComment').length ) {
+			new Valine({
+				// AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+				av: AV,
+				//使用id寻找div元素（使用class可能找不到）
+				el: '#valineComment',
+				emoticon_url: 'https://cloud.panjunwen.com/alu',
+				emoticon_list: ["吐.png", "期待.png", "高兴.png", "吐血倒地.png", "哭泣.png", "欢呼.png"],
+				app_id: "3333....", //获取APP ID
+				app_key: "3333......", //获取APP KEY
+				placeholder: "no any!", //评论框占位提示文字        			
+			});
+			clearInterval(checkExistComment);
+		}
+	}, 100);
+</script>
+		
+	
+
+</div>
+
+<script type="text/javascript">
+	/* Show Comment */
+	var Annie_Comment = function() {
+		function Show_Hidden(obj) {
+			obj.style.display = 'block';
+		}
+		
+		//var obutton = $('#annie-comment-button');
+		//var obutton = $('#annie-comment-container');
+		var obutton = document.getElementById("annie-comment-button" || "0");
+		var odiv = document.getElementById("annie-comment-container");
+		if( 'obutton' ) {
+			obutton.onclick = function() {
+				Show_Hidden(odiv);
+				$("#annie-comment-button").css("display", 'none');
+				return false;
+			}
+		}
+	};
+
+	(function Annie_Init() {
+		Annie_Comment();
+	})();
+</script>
+		
+		<!--
+	时间：2018-09-24
+	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
+-->
+
+	
+
+	</div>
+</div>
+		</div>
+		</main>
+		
+		<!--footer-->
+		<footer>
+	<div class="blog-text-center">
+		<div class="theme-annie-social">
+				
+				
+					<a href="http://github.com/" title="Github" target="_blank"><i class="fa fa-github"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="Weibo" target="_blank"><i class="fa fa-weibo"></i>&nbsp;</a>
+				
+				
+					<a href="http://github.com/" title="Email" target="_blank"><i class="fa fa-envelope-o"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="QQ" target="_blank"><i class="fa fa-qq"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="Twitter" target="_blank"><i class="fa fa-twitter"></i>&nbsp;</a>
+						
+				
+		</div>
+	</div>
+
+	<div class="blog-text-center">
+		<div class="theme-annie-copyright">
+			
+				&copy; 2017 - 2018, content by Gaoyu. All Rights Reserved.			       	
+			
+		</div>
+	</div>
+
+	<div class="blog-text-center">
+		<div class="theme-annie-copyright">
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.		
+		</div>
+	</div>
+</footer>
+		<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script> -->
+
+<script>
+	window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js"><\/script>')
+</script>
+
+<style>
+	.motto {
+		color: #000000;
+		font-size: 20px;
+		margin: 100px 25% 0;
+		width: 50%;
+		line-height: 1.4;
+		font-family:"KaiTi", "STXingkai", "Source Sans Pro", "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
+		text-align: center;
+	}
+	@media(max-width: 890px) {
+		.motto {	
+			margin: 100px 10% 0;
+			width: 80%;
+		}
+	}
+	@media(max-width: 890px) {
+		.motto {
+			margin: 100px 5% 0;
+			width: 90%;
+		}
+	}
+</style>
+
+
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html(getMingYanContent());
+	</script>	
+
+
+
+
+
+
+
+	<script type="text/javascript" src="/js/toc.js"></script>
+
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript">
+	//generate a random img that pre_name 'from 0 to 110'
+	var random_bg = Math.floor(Math.random() * 109 + 1);
+
+	//var bg = 'url(/img/random/' + random_bg + '.jpg)';		
+	var bg = 'url(https://XXX-youname-XXX.github.io/Random-img/' + random_bg + '.jpg)';
+
+	$("#header-bg-2").css("background-image", bg);
+</script>
+		
+		<!--back to top-->
+        <style type="text/css">
+	#totop {
+		background: white;
+		border-radius: 50%;
+		position: fixed;
+		right: 5.4%;
+		bottom: 80px;
+		cursor: pointer;
+	}
+	
+	#totop a {
+		color: #474747;
+		background-color: transparent;
+		padding: 10px;
+		text-decoration: none;
+	}
+	
+	@media(max-width:512px) {
+		#totop {
+			display: none;
+			visibility: hidden;
+		}
+	}
+</style>
+
+
+	<div id="totop">
+  		<a href="javascript:;" class="fa fa-arrow-up"></a>
+	</div>
+
+	</body>
+	</html>
+
