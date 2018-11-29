@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>Linux基础</title>
+	<title>django</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,7 +54,7 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《django》</p>
 			
 		
 	
@@ -159,20 +159,31 @@
 				<h1 class="am-article-title blog-text-center">
 					
 					
+	
+		<a href="/2018/11/28/django01/" itemprop="url">		
+			django		
+		</a>
+	
+
 				</h1>
 
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/29/django01/" itemprop="url">
-	<time datetime="2018-11-29T12:45:59.943Z" itemprop="datePublished">
-  		2018-11-29
+						<a href="/2018/11/28/django01/" itemprop="url">
+	<time datetime="2018-11-28T12:32:13.000Z" itemprop="datePublished">
+  		2018-11-28
   </time>
 </a>    
 &nbsp;
 					</span>
 					
 					<span>						
+						
+							<i class="fa fa-tags"></i>
+							
+								<a href="#django" title="django" rel="1">django</a>&nbsp;
+													 											
 						
 					</span>
 				</p>
@@ -181,10 +192,7 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<hr>
-<p>title: django<br>date: 2018-11-28 20:32:13</p>
-<h2 id="tags-django"><a href="#tags-django" class="headerlink" title="tags:django"></a>tags:django</h2><p>模型</p>
-<p>通过django在Mysql数据库中创建表<br>1.在应用下的models.py文件中编写数据模型<br>    创建简单的学生表格模型<br>    class Student(models.Model):<br>        name = models.CharField(max_length=10,unique=True)<br>        age = models.IntegerField(default=18)<br>        gender = models.BooleanField(default=1)</p>
+						<p>通过django在Mysql数据库中创建表<br>1.在应用下的models.py文件中编写数据模型<br>    创建简单的学生表格模型<br>    class Student(models.Model):<br>        name = models.CharField(max_length=10,unique=True)<br>        age = models.IntegerField(default=18)<br>        gender = models.BooleanField(default=1)</p>
 <p>2.在项目下的settings.py文件中的INSTALLED_APPS下最后一行添加’应用的名字’</p>
 <p>  在DATABASES 中更改数据库的信息 </p>
 <pre><code>DATABASES = {
@@ -287,9 +295,15 @@ stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;)+10)
 
 		<ul class="am-pagination">
     
+    	<li class="am-pagination-prev">
+   		<a class="pull-left" href="/2018/11/29/django02/" title="">
+      		&laquo; 上一篇
+		</a>
+		</li>
+	
 	
 		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/11/29/django02/" title="">
+		<a class="pull-right" href="/2018/11/19/learn-linux/" title="">
 			下一篇 &raquo;
 		</a>
 		</li>
@@ -373,18 +387,6 @@ stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;)+10)
 	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
 -->
 
-	
-		<aside class="post-widget">
-			<nav class="post-toc-wrap" id="post-toc">
-				
-					<strong>文章目录</strong>
-				
-				
-				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tags-django"><span class="post-toc-text">tags:django</span></a></li></ol>
-			</nav>
-			<div class="post-toc-bar"><div>
-		</div></div></aside>
 	
 
 	</div>
