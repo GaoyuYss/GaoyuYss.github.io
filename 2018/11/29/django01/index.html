@@ -164,9 +164,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/19/learn-linux/" itemprop="url">
-	<time datetime="2018-11-19T12:36:25.018Z" itemprop="datePublished">
-  		2018-11-19
+						<a href="/2018/11/29/django01/" itemprop="url">
+	<time datetime="2018-11-29T12:45:59.943Z" itemprop="datePublished">
+  		2018-11-29
   </time>
 </a>    
 &nbsp;
@@ -181,21 +181,104 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<p>Linux基础5<br>网络相关命令</p>
-<p>以太网  –Ethernet<br>ping -检查网络可达性 - ICMP<br>tracepath –检查数据路由  （请求的路径通过的路由）<br>ifconfig  检查网络接口（网络适配器）<br>ip -查看配置网络接口相关信息<br>netstat   –查看网络状态<br>netstat -nap  n:以数字的形式返回网络状态 ，a -所有的  p -端口<br>进程，端口，服务起了没有<br>netstat-nap  | grep redis   查找redis服务<br>sftp -安全网络文件传输<br>scp  -安全文件拷贝<br>scp 文件 <a href="mailto:root@1.2.3.4" target="_blank" rel="noopener">root@1.2.3.4</a>:/目录/文件名   （将文件传到另一名用户）</p>
-<p>如何把程序放在后台学习：<br>redis-server &amp;  在启动redis的时候把程序放在后台运行<br>redis-server &gt; redis.log &amp;   输出重定向到redis.log<br>,&gt;&gt;  追加输出重定向<br> 2&gt;  错误输出重定向</p>
-<p>jobs   查看在后台运行的进程<br>fg  %编号   把后台的运行的进程放在前台运行 （编号是jobs中前面的编号）<br>bg  %编号     让后台停止的程序运行起来<br>Ctl +z - 将前台进程暂停放在后台</p>
-<p>touch 文件名  如果文件的是已经创建的，那么改变他的创建时间，如果不存在就创建一个新的文件</p>
-<p>版本控制<br>1990s -CVS / VSS   （锁定模式）</p>
-<p>替代品<br>2000s -SVN -Subversion  (合并模式)</p>
-<p>2005s -BitKeeper  (分布式版本控制系统)<br>Git C语言写的<br>Mercury  python写的</p>
-<p>Git的使用<br>1.创建git仓库<br>git init </p>
-<p>2.将代码纳入暂停区<br>git add 文件名<br>git add .</p>
-<p>3.查看暂存区状态<br>git status<br>git rm –cached 文件名 （将文件从缓存区移除）<br>git rm 文件名 （删除缓存区，同时工作区也删除文件）</p>
-<p>4.提交到本地仓库<br>git  commit -m ‘说明’</p>
-<p>5.查看提交日志<br>git log     -查看前面的版本<br>git reflog  -查看到前面和后面的版本</p>
-<p>6.回到历史版本和之后的版本<br>git reset 版本号<br>git reset –hard HEAD^ 回到上一个版本<br>git reset –hard HEAD^^ 回到上两个版本<br>git reset –hard 版本的哈希摘要</p>
-<p>–hard参数是为了保持工作区和历史版本的一致性</p>
+						<hr>
+<p>title: django<br>date: 2018-11-28 20:32:13</p>
+<h2 id="tags-django"><a href="#tags-django" class="headerlink" title="tags:django"></a>tags:django</h2><p>模型</p>
+<p>通过django在Mysql数据库中创建表<br>1.在应用下的models.py文件中编写数据模型<br>    创建简单的学生表格模型<br>    class Student(models.Model):<br>        name = models.CharField(max_length=10,unique=True)<br>        age = models.IntegerField(default=18)<br>        gender = models.BooleanField(default=1)</p>
+<p>2.在项目下的settings.py文件中的INSTALLED_APPS下最后一行添加’应用的名字’</p>
+<p>  在DATABASES 中更改数据库的信息 </p>
+<pre><code>DATABASES = {
+  &apos;default&apos;: {
+      &apos;ENGINE&apos;: &apos;django.db.backends.mysql&apos;,
+      &apos;NAME&apos;: &quot;dj7&quot;,
+      &apos;HOST&apos;:&quot;localhost&quot;,
+      &apos;USER&apos;:&apos;root&apos;,
+      &apos;PASSWORD&apos;:&quot;123456&quot;,
+      &apos;PORT&apos;:3306
+  }
+}
+</code></pre><p>3.更改项目下<strong>init</strong>.py文件，在里面倒出pymysql<br>  pymysql.install_as_MySQLdb()</p>
+<p>4.python manage.py makemigrations  生成迁移文件<br>此时在应用下的grations下面就会生成一个0001_initial.py文件</p>
+<p>5.python manage.py migrate   迁移文件<br>此时就会在dj7这个数据库下生成一张与模型对应的表格，自动生成主键，主键自动增长</p>
+<p>二、字段的定义</p>
+<p>字符串： CharField<br>整型  ： IntegerField<br>布尔  :  BooleanField<br>日期  ： DateTimeField、DateField、TimeField<br>自增  ： AutoField<br>图片  :  ImageField</p>
+<p>约束定义<br>是否唯一  unique<br>是否为空  null<br>默认值    default<br>默认时间  auto_now_add<br>修改时间  auto_now</p>
+<p>#ORM,对象关系映射</p>
+<p>增加 –create()<br>一、</p>
+<pre><code># 第一种方式进行创建：save()
+# stu=Student()
+# stu .name = &apos;小明&apos;
+# 向数据库中插入一条数据
+# stu.save()
+</code></pre><p>二、模型名.objects.create(name=’更改’，age=19)</p>
+<p>删除 –delete()<br>    1.模型名.objects.filter(name=’筛选’).delete()</p>
+<p>修改 –update()<br>一、<br>    stu = Student.objects.filter(name=’小明’).first()<br>    stu.name=’大明’<br>    stu.save()<br>二、模型名.objects.filter(xxx=’筛选’).update(xxx=’更改’)</p>
+<p>查询 –filter() ==&gt;’select * from xxx’<br>一、<br>模型名.objects.filter(xxx=’筛选’)<br>filter方法：<br>查询结果可以不存在 或者可以为多个<br>如果查询结果不存在，返回一个空的列表</p>
+<p>二、<br>模型名.objects.get(xxx=’筛选’<br>get 方法：<br>获取唯一的满足条件的对象，且查询的条件必须存在<br>如果查询结果不存在或者结果为多个都报错</p>
+<p>查询结果的筛选：<br>first()：查询结果中的第一个<br>last():查询结果中的最后一个</p>
+<p>拿到全部表格对象：<br>模型名.objects.all()</p>
+<p>多条件筛选：<br>模型名.objects.filter(xxx=’筛选’).filter(xxx=’筛选’)<br>模型名.objects.filter(xxx=’筛选’，xxx=’筛选’)</p>
+<p>exclud():查询不包含该条件的结果</p>
+<pre><code># 查询不叫大明的学生信息
+stus = Student.objects.exclude(name=&apos;军军&apos;)
+</code></pre><p>values():选择查看结果对象的信息</p>
+<pre><code># 通过values()查看学生对象的所有信息
+stus = Student.objects.filter(name=&apos;军军&apos;).values()
+# 通过values()查看学生name,id的信息
+stus = Student.objects.filter(name=&apos;军军&apos;).values(&apos;name&apos;,&apos;id&apos;)
+</code></pre><p>exists():</p>
+<pre><code># 判断name = 军军的学生存不存在，存在返回True，不存在返回False
+stu = Student.objects.filter(name=&apos;军军&apos;).exists()
+</code></pre><p>排序：<br>    排序 order_by<br>    降序 –&gt; -id ,在sql中id desc<br>    升序 –&gt;  id , 在sql 中id asc</p>
+<pre><code>#查询所有的Student的对象，以升序排序
+stus = Student.objects.all().order_by(&apos;id&apos;)
+#查询结果以age的大小（逆序）排序
+stus = Student.objects.all().order_by(&apos;-age&apos;)
+</code></pre><p>基于like模糊查询：</p>
+<pre><code>contains:区分大小写;icontains:大小写不敏感
+name__contains=&apos;大&apos; --&gt;相当于是like &apos;%大%&apos;
+stus = Student.objects.filter(name__contains=&apos;大&apos;)
+
+endswith:区分大小写；iendswith：不区分大小写
+name__endswith=&apos;大&apos;--&gt;相当于是like ‘%大’
+stus = Student.objects.filter(name__endswith=&apos;大&apos;)
+
+startwith:区分大小写，istartswith：不区分大小写
+name__startswith=&apos;大&apos;--&gt;相当于是like ‘大%’
+#stus = Student.objects.filter(name__startswith=&apos;大&apos;)
+</code></pre><p>in: 集合运算</p>
+<pre><code>#sql :select * from Student where id in (1,2,3);
+# 查询id在[1,2,3] 中的对象
+stus = Student.objects.filter(id__in=[1,2,3])
+# 查询pk（主键）在[1,2,3]中的对象
+stus = Student.objects.filter(pk__in=[1,2,3]
+</code></pre><p>比较运算:</p>
+<pre><code>大于：__gt__    ；大于等于 ：__gte__
+小于：__lt__    ；小于等于 ：__lte__
+#查询age小于30的对象
+stus = Student.objects.filter(age__lt=30)
+</code></pre><p>聚合函数：</p>
+<pre><code># 获取所有对象age的平均值
+avg_age = Student.objects.all().aggregate(Avg(&apos;age&apos;))
+print(avg_age)
+# 查询所有对象age的总和
+sum_age = Student.objects.all().aggregate(Sum(&apos;age&apos;))
+</code></pre><p>Q对象（用于执行复杂查询）的使用：</p>
+<pre><code># 中间打个逗号，意思是并且
+stus = Student.objects.filter(Q(age=18),Q(gender=1))
+# &amp; 并且，对应and
+stus = Student.objects.filter(Q(age=18) &amp; Q(gender=1))
+# | 或者，对应or
+stus = Student.objects.filter(Q(age=18) | Q(gender=1))
+#查询age不是18，或者gender=1的学生对象
+stus = Student.objects.filter(~Q(age=18) | Q(gender=1))
+
+# 查询语文成绩大于数学成绩的对象
+stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;))
+# 查询语文成绩大于数学成绩10分以上的
+stus = Student.objects.filter(yuwen__gt=F(&apos;shuxue&apos;)+10)
+</code></pre><p>更改启动服务后的ip和端口<br>格式:python manage.py runserver ip：端口</p>
+<p>格式：python manage.py runserver 端口<br>不能在后面只改IP</p>
 
 					
 				</div>
@@ -204,13 +287,13 @@
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/29/django02/" title="">
-      		&laquo; 上一篇
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/11/29/django02/" title="">
+			下一篇 &raquo;
 		</a>
 		</li>
-	
-	
+	 
  </ul>
         
 
@@ -290,6 +373,18 @@
 	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
 -->
 
+	
+		<aside class="post-widget">
+			<nav class="post-toc-wrap" id="post-toc">
+				
+					<strong>文章目录</strong>
+				
+				
+				<!--toc(post.content)-->
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tags-django"><span class="post-toc-text">tags:django</span></a></li></ol>
+			</nav>
+			<div class="post-toc-bar"><div>
+		</div></div></aside>
 	
 
 	</div>
