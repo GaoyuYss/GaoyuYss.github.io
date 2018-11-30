@@ -164,9 +164,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/19/learn-linux/" itemprop="url">
-	<time datetime="2018-11-19T12:36:25.018Z" itemprop="datePublished">
-  		2018-11-19
+						<a href="/2018/11/30/request/" itemprop="url">
+	<time datetime="2018-11-30T12:28:41.006Z" itemprop="datePublished">
+  		2018-11-30
   </time>
 </a>    
 &nbsp;
@@ -181,21 +181,22 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<p>Linux基础5<br>网络相关命令</p>
-<p>以太网  –Ethernet<br>ping -检查网络可达性 - ICMP<br>tracepath –检查数据路由  （请求的路径通过的路由）<br>ifconfig  检查网络接口（网络适配器）<br>ip -查看配置网络接口相关信息<br>netstat   –查看网络状态<br>netstat -nap  n:以数字的形式返回网络状态 ，a -所有的  p -端口<br>进程，端口，服务起了没有<br>netstat-nap  | grep redis   查找redis服务<br>sftp -安全网络文件传输<br>scp  -安全文件拷贝<br>scp 文件 <a href="mailto:root@1.2.3.4" target="_blank" rel="noopener">root@1.2.3.4</a>:/目录/文件名   （将文件传到另一名用户）</p>
-<p>如何把程序放在后台学习：<br>redis-server &amp;  在启动redis的时候把程序放在后台运行<br>redis-server &gt; redis.log &amp;   输出重定向到redis.log<br>,&gt;&gt;  追加输出重定向<br> 2&gt;  错误输出重定向</p>
-<p>jobs   查看在后台运行的进程<br>fg  %编号   把后台的运行的进程放在前台运行 （编号是jobs中前面的编号）<br>bg  %编号     让后台停止的程序运行起来<br>Ctl +z - 将前台进程暂停放在后台</p>
-<p>touch 文件名  如果文件的是已经创建的，那么改变他的创建时间，如果不存在就创建一个新的文件</p>
-<p>版本控制<br>1990s -CVS / VSS   （锁定模式）</p>
-<p>替代品<br>2000s -SVN -Subversion  (合并模式)</p>
-<p>2005s -BitKeeper  (分布式版本控制系统)<br>Git C语言写的<br>Mercury  python写的</p>
-<p>Git的使用<br>1.创建git仓库<br>git init </p>
-<p>2.将代码纳入暂停区<br>git add 文件名<br>git add .</p>
-<p>3.查看暂存区状态<br>git status<br>git rm –cached 文件名 （将文件从缓存区移除）<br>git rm 文件名 （删除缓存区，同时工作区也删除文件）</p>
-<p>4.提交到本地仓库<br>git  commit -m ‘说明’</p>
-<p>5.查看提交日志<br>git log     -查看前面的版本<br>git reflog  -查看到前面和后面的版本</p>
-<p>6.回到历史版本和之后的版本<br>git reset 版本号<br>git reset –hard HEAD^ 回到上一个版本<br>git reset –hard HEAD^^ 回到上两个版本<br>git reset –hard 版本的哈希摘要</p>
-<p>–hard参数是为了保持工作区和历史版本的一致性</p>
+						<hr>
+<p>  title: 页面的请求<br>  date: 2018-11-30 20:36:55</p>
+<h2 id="tags-request"><a href="#tags-request" class="headerlink" title="  tags: request"></a>  tags: request</h2><p>django注册、登录系统</p>
+<p>##request:向服务器发送的请求<br>&emsp;    # COOKIE :传递客户端中的cookie内容</p>
+<pre><code># GET ：获取http GET 请求中传递的参数。如：127.0.0.1:80、xxx/?id=1
+# POST :获取http POST请求中传递的参数
+# FILES :获取页面中传递的图片文件
+# path :获取当前请求的URL路径
+# method:获取请求方式,有GET和POST
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#拿ruquest的数据：</span><br><span class="line"> if request.method == &apos;POST&apos;:</span><br><span class="line">&amp;emsp;  username = request.POST.get(&apos;username&apos;)</span><br><span class="line">        password = request.POST.get(&apos;password&apos;)</span><br><span class="line">        password2 = request.POST.get(&apos;password2&apos;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#通过路由index，在页面上返回‘hello’，并且对此请求设置令牌</span><br><span class="line">def index(request):</span><br><span class="line">	#res是页面请求响应</span><br><span class="line">    res = HttpResponse(&apos;hello&apos;)</span><br><span class="line">    # 设置令牌   </span><br><span class="line">    res.set_cookie(&apos;token&apos;,&apos;123123&apos;,6000)</span><br><span class="line">    # 删除令牌</span><br><span class="line">    # res.delete_cookie(&apos;token&apos;)</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<p>##HttpResponse：<br>在django.http模块中定义了HttpResponse对象的API<br>HttpRequest对象由Django自动创建，HttpResponse对象由程序员创建<br>不调用模板，直接返回数据</p>
+<p>##HttpResponseRedirect:<br>res = HttpResponseRedirect(‘/my_index/‘)<br>调用my_index路由，通过路由执行函数</p>
+<p>##render:<br>render(request,’register.html’,{‘err’:err})<br>render(request, template_name,{‘xxx’, xxx})<br>结合一个给定的模板和一个给定的上下文字典，并返回一个渲染后的HttpResponse对象<br>request：该request用于生成response<br>template_name：要使用的模板的完整名称<br>context：添加到模板上下文的一个字典，视图将在渲染模板之前调用它<br> 注意：render是将模板渲染到当前路由下，即只是把模板拿过来渲染，并没有到别的路由下，<br>        当使用render得到别的页面时，POST或者GET请求都是给原来的路由处理</p>
+<p>##cookie：令牌<br>&emsp;    set_cookie(key, value=’’, max_age=None, expires=None)：设置Cookie<br>    key、value都是字符串类型<br>    max_age是一个整数，表示在指定秒数后过期<br>    expires是一个datetime或timedelta对象，会话将在这个指定的日期/时间过期，注意datetime和timedelta值只有在使用PickleSerializer时才可序列化<br>    max_age与expires二选一<br>    如果不指定过期时间，则两个星期后过期</p>
+<p>注意：设置筛选后，必须要有令牌才能通过路由到达指定页面，令牌过期也不能通过筛选，<br>因为数据库中令牌数据过期销毁</p>
 
 					
 				</div>
@@ -204,13 +205,13 @@
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/28/django01/" title="django">
-      		&laquo; 上一篇
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/11/29/django02/" title="">
+			下一篇 &raquo;
 		</a>
 		</li>
-	
-	
+	 
  </ul>
         
 
@@ -290,6 +291,18 @@
 	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
 -->
 
+	
+		<aside class="post-widget">
+			<nav class="post-toc-wrap" id="post-toc">
+				
+					<strong>文章目录</strong>
+				
+				
+				<!--toc(post.content)-->
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tags-request"><span class="post-toc-text">  tags: request</span></a></li></ol>
+			</nav>
+			<div class="post-toc-bar"><div>
+		</div></div></aside>
 	
 
 	</div>
